@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인기 상품</title>
+
+    {% load static %}
+    {% load humanize %}
+
+    <link rel="stylesheet" href="{% static 'main/css/all_products.css' %}">
+</head>
+<body>
+    <!-- 상단 바 -->
+    <div class="top-bar">
+        <ul>
+            <li><a href="{% url 'main_page' %}">홈</a></li>
+            <li><a href="{% url 'popular_products' %}">인기 상품</a></li>
+            <li><a href="{% url 'product_register' %}">상품 등록</a></li>
+            <li><a href="{% url 'all_products' %}">전체 상품</a></li>
+            <div class="spacer"></div>
+            <li>
+                <form class="search-form" method="GET" action="{% url 'all_products' %}">
+                    <input type="text" name="search-query" placeholder="검색어를 입력하세요">
+                    <button type="submit">검색</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 인기 상품 리스트 -->
+    <div class="container">
+        <h1>인기 상품</h1>
+        <div class="product-list">
+            {% for product in products %}
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="{% if product.photo %}{{ product.photo.url }}{% else %}{% static 'main/images/no_image.png' %}{% endif %}" alt="{{ product.title }}">
+                </div>
+                <h3>{{ product.title }}</h3>
+                <p>👁️{{ product.view_count }}</p>
+                {% if product.is_free %}
+                    <p>무료 나눔</p>
+                {% else %}
+                    <p>가격: {{ product.formatted_price|intcomma }}원</p>
+                {% endif %}
+                <a href="{% url 'product_detail' product.id %}">자세히 보기</a>
+            </div>
+            {% empty %}
+            <p>등록된 상품이 없습니다.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
