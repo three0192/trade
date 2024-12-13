@@ -69,7 +69,6 @@ body {
     transition: background-color 0.3s;
 }
 
-/* 검색 버튼 hover 시 스타일 */
 .search-form button:hover {
     background-color: #555;
 }
@@ -116,10 +115,68 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .sidebar button:hover {
     background-color: #555;
+}
+
+/* 비 로그인 시 로그인 섹션 스타일 */
+.login-section {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-section h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.login-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-section input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.login-section button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-section button:hover {
+    background-color: #555;
+}
+
+.login-section .signup-link {
+    display: block;
+    margin-top: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.login-section .signup-link:hover {
+    color: #555;
 }
 
 /* 중앙 컨텐츠 */
@@ -135,7 +192,6 @@ body {
     font-weight: bold;
 }
 
-/* 기능 소개 박스 */
 .feature-boxes {
     display: flex;
     gap: 20px;

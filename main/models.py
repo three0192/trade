@@ -1,5 +1,7 @@
 from django.db import models
 from decimal import Decimal
+from django.contrib.auth.models import User
+from django.db import models
 
 # 과목 선택지
 SUBJECT_CHOICES = [
@@ -53,3 +55,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment on {self.product.title} by {self.name} at {self.created_at}"
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # 사용자와 1:1 관계
+    school = models.CharField(max_length=20, blank=True)  # 학교
+    grade = models.CharField(max_length=10, blank=True)  # 학년
+
+    def __str__(self):
+        return f"{self.user.username}'s Profile"
