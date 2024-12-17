@@ -12,23 +12,8 @@
 </head>
 <body>
     <!-- 상단 바 -->
-    <div class="top-bar">
-        <ul>
-            <li><a href="{% url 'main_page' %}">홈</a></li>
-            <li><a href="{% url 'popular_products' %}">인기 상품</a></li>
-            <li><a href="{% url 'product_register' %}">상품 등록</a></li>
-            <li><a href="{% url 'all_products' %}">전체 상품</a></li>
-            <div class="spacer"></div>
-            <li>
-                <form class="search-form" method="GET" action="{% url 'all_products' %}">
-                    <input type="text" name="search_query" placeholder="검색어를 입력하세요" value="{{ search_query|default:'' }}">
-                    <button type="submit">검색</button>
-                </form>
-            </li>
-        </ul>
-    </div>
+    {% include 'main/topbar.html' %} <!-- 상단 바 포함 -->
     
-
     <!-- 인기 상품 리스트 -->
     <div class="container">
         <h1>인기 상품</h1>

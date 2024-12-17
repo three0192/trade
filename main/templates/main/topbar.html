@@ -1,0 +1,18 @@
+<!-- topbar.html -->
+<div class="top-bar">
+    <ul>
+        <li><a href="{% url 'main_page' %}">홈</a></li>
+        <li><a href="{% url 'popular_products' %}">인기 상품</a></li>
+        <li><a href="{% url 'product_register' %}">상품 등록</a></li>
+        <li><a href="{% url 'all_products' %}">전체 상품</a></li>
+        <div class="spacer"></div>
+        
+        <!-- 검색창 추가 -->
+        <li class="search">
+            <form class="search-form" action="{% url 'all_products' %}" method="GET">
+                <input type="text" placeholder="입력..." name="search_query" value="{{ request.GET.search_query }}">
+                <button type="submit">검색</button>
+            </form>
+        </li>
+    </ul>
+</div>
